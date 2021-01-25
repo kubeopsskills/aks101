@@ -1,11 +1,11 @@
 module "foundation_network_aks" {
     source = "../../../modules/foundation_network_aks"
-    company = "kubeopsskills"
-    environment = "develop"
-    project = "cloudnative"
-    location = "Southeast Asia"
-    vnet_address_space = "10.0.0.0/16"
-    subnet_address_space = "10.0.1.0/24"
+    company = var.company
+    environment = var.environment
+    project = var.project
+    location = var.location
+    vnet_address_space = var.vnet_address_space
+    subnet_address_space = var.subnet_address_space
 }
 
 provider "azure" {

@@ -1,5 +1,5 @@
 module "aks_cluster" {
-    source = "../../../modules/aks_cluster"
+    source = "../../modules/aks_cluster"
     company = var.company
     environment = var.environment
     project = var.project

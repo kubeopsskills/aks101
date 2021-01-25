@@ -27,17 +27,17 @@ variable "aks_node_vm_size" {
 }
 
 variable "aks_node_enable_public_ip" {
-  type = "bool"
+  type = bool
   description = "AKS Node Enabled Public IP"
 }
 
 variable "aks_node_availability_zones" {
-  type = "list"
+  type = list
   description = "AKS Node Availability Zones"
 }
 
 variable "aks_enable_auto_scaling" {
-  type = "bool"
+  type = bool
   description = "AKS Enable Auto Scaling"
 }
 
@@ -54,7 +54,7 @@ variable "aks_node_max" {
 }
 
 variable "aks_node_labels" {
-  type = "map"
+  type = map
   description = "AKS Node Labels"
 }
 

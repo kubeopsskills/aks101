@@ -18,7 +18,4 @@ aks_node_labels = {
 kubernetes_version_prefix = 1.18
 aks_managed_identity_assignment_scope = "/subscriptions/a9d3f30c-c06f-4536-a7c1-93dcf16414c2/resourceGroups/kubeopsskills_cloudnative_develop_rg"
 
-client_app_id = 
-server_app_id = 
-server_app_secret = 
-tenant_id = 
+tenant_id = "c91b0399-fe11-412f-a862-1fe7b725ad42"

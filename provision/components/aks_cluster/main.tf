@@ -16,9 +16,6 @@ module "aks_cluster" {
     aks_node_labels = var.aks_node_labels
     kubernetes_version_prefix = var.kubernetes_version_prefix
     aks_managed_identity_assignment_scope = var.aks_managed_identity_assignment_scope
-    client_app_id = var.client_app_id
-    server_app_id = var.server_app_id
-    server_app_secret = var.server_app_secret
     tenant_id = var.tenant_id
 }
 
@@ -30,7 +27,7 @@ terraform {
   required_providers {
     azure = {
       source  = "hashicorp/azurerm"
-      version = "=2.40.0"
+      version = "=2.44.0"
     }
   }
 }

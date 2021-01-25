@@ -66,18 +66,6 @@ variable "aks_managed_identity_assignment_scope" {
   description = "AKS Managed Identity Assignment Scope"
 }
 
-variable "client_app_id" {
-  description = "Client App ID"
-}
-
-variable "server_app_id" {
-  description = "Server App ID"
-}
-
-variable "server_app_secret" {
-  description = "Server App Secret"
-}
-
 variable "tenant_id" {
   description = "Tenant ID"
 }

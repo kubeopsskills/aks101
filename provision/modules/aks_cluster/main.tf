@@ -1,27 +1,3 @@
-resource "azurerm_user_assigned_identity" "aks_user_assigned_identity" {
-  resource_group_name = var.aks_resource_group_name
-  location            = var.location
-  name = "${var.company}_${var.project}_${var.environment}_aks_user_assigned_identity"
-}
-
-resource "azurerm_role_assignment" "managed_identity_operator_assignment" {
-  scope                = var.aks_managed_identity_assignment_scope
-  role_definition_name = "Managed Identity Operator"
-  principal_id         = azurerm_user_assigned_identity.aks_user_assigned_identity.principal_id
-  depends_on = [
-    azurerm_user_assigned_identity.aks_user_assigned_identity
-  ]
-}
-
-resource "azurerm_role_assignment" "virtual_machine_operator_assignment" {
-  scope                = var.aks_managed_identity_assignment_scope
-  role_definition_name = "Virtual Machine Contributor"
-  principal_id         = azurerm_user_assigned_identity.aks_user_assigned_identity.principal_id
-  depends_on = [
-    azurerm_user_assigned_identity.aks_user_assigned_identity
-  ]
-}
-
 data "azurerm_kubernetes_service_versions" "kubernetes_version" {
   location = var.location
   version_prefix = var.kubernetes_version_prefix
@@ -51,7 +27,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   }
 
   default_node_pool {
-    name = "${var.company}_${var.project}_${var.environment}_aks_node_pool_default"
+    name                  = "defaultpool"
     vnet_subnet_id        = var.aks_subnet_id
     vm_size               = var.aks_node_vm_size
     type                  = "VirtualMachineScaleSets"
@@ -79,16 +55,18 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   role_based_access_control {
     azure_active_directory {
       managed           = false
-      client_app_id     = var.client_app_id
-      server_app_id     = var.server_app_id
-      server_app_secret = var.server_app_secret
+      client_app_id     = azuread_application.aks_azuread_client.application_id
+      server_app_id     = azuread_application.aks_azuread_server.application_id
+      server_app_secret = random_string.password_random.result
       tenant_id         = var.tenant_id
     }    
     enabled = true
   }
 
   depends_on = [
-    azurerm_user_assigned_identity.aks_user_assigned_identity
+    azurerm_user_assigned_identity.aks_user_assigned_identity,
+    azuread_service_principal_password.aks_azuread_server_principal_password,
+    azuread_application.aks_azuread_client
   ]
 
 }

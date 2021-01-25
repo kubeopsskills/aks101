@@ -1,5 +1,5 @@
 module "foundation_network_aks" {
-    source = "../../../modules/foundation_network_aks"
+    source = "../../modules/foundation_network_aks"
     company = var.company
     environment = var.environment
     project = var.project

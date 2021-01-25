@@ -1,12 +1,6 @@
 # AKS 101 Terraform Workshop
 
-<img src="./assets/logo.png" width="26%" height="26%"/>
-
 This is an AKS 101 Terraform Workshop.
-
-**Facebook:** [Link](https://facebook.com/kubeopsskills)
-
-**Youtube:** [Link](https://www.youtube.com/c/kubeopsskills)
 
 # Copyright
 

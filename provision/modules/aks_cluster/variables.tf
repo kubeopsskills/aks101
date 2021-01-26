@@ -18,8 +18,16 @@ variable "aks_resource_group_name" {
   description = "AKS Resource Group Name"
 }
 
+variable "aks_node_resource_group_name" {
+  description = "AKS Node Resource Group Name"
+}
+
 variable "aks_subnet_id" {
   description = "AKS Subnet ID"
+}
+
+variable "aks_node_user_pool_name" {
+  description = "AKS Node User Pool Name"
 }
 
 variable "aks_node_vm_size" {
@@ -56,6 +64,10 @@ variable "aks_node_max" {
 variable "aks_node_labels" {
   type = map
   description = "AKS Node Labels"
+}
+
+variable "aks_agent_node_count" {
+  description = "AKS Agent Node Count"
 }
 
 variable "kubernetes_version_prefix" {

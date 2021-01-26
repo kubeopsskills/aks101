@@ -1,6 +1,5 @@
 resource "azuread_application" "aks_azuread_server" {
   display_name            = "${var.company}_${var.project}_${var.environment}_aksServer"
-  type                    = "native"
   identifier_uris         = ["https://${var.company}_${var.project}_${var.environment}_aksServer"]
   group_membership_claims = "All"
   

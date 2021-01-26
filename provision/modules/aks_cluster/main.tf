@@ -7,7 +7,7 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   name                = "${var.company}_${var.project}_${var.environment}_aks"
   location            = var.location
   resource_group_name = var.aks_resource_group_name
-  node_resource_group = var.aks_resource_group_name
+  node_resource_group = var.aks_node_resource_group_name
   dns_prefix          = "${var.company}-${var.project}-${var.environment}-aks"
   kubernetes_version  = data.azurerm_kubernetes_service_versions.kubernetes_version.latest_version
   
@@ -27,17 +27,12 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
   }
 
   default_node_pool {
-    name                  = "defaultpool"
+    name                  = "agentpool"
     vnet_subnet_id        = var.aks_subnet_id
     vm_size               = var.aks_node_vm_size
     type                  = "VirtualMachineScaleSets"
     enable_node_public_ip = var.aks_node_enable_public_ip
-    availability_zones    = var.aks_node_availability_zones
-    enable_auto_scaling   = var.aks_enable_auto_scaling
-    node_count            = var.aks_node_count
-    min_count             = var.aks_node_min
-    max_count             = var.aks_node_max
-    node_labels           = var.aks_node_labels
+    node_count            = var.aks_agent_node_count
     orchestrator_version  = data.azurerm_kubernetes_service_versions.kubernetes_version.latest_version
   }
 
@@ -69,4 +64,22 @@ resource "azurerm_kubernetes_cluster" "aks_cluster" {
     azuread_application.aks_azuread_client
   ]
 
+}
+
+resource "azurerm_kubernetes_cluster_node_pool" "aks_node_user_pool" {
+  name                  = var.aks_node_user_pool_name
+  kubernetes_cluster_id = azurerm_kubernetes_cluster.aks_cluster.id
+  vnet_subnet_id        = var.aks_subnet_id
+  mode                  = "User"
+  vm_size               = var.aks_node_vm_size
+  os_type               = "Linux"
+  priority              = "Regular"
+  enable_node_public_ip = var.aks_node_enable_public_ip
+  availability_zones    = var.aks_node_availability_zones
+  enable_auto_scaling   = var.aks_enable_auto_scaling
+  node_count            = var.aks_node_count
+  min_count             = var.aks_node_min
+  max_count             = var.aks_node_max
+  node_labels           = var.aks_node_labels
+  orchestrator_version  = data.azurerm_kubernetes_service_versions.kubernetes_version.latest_version
 }

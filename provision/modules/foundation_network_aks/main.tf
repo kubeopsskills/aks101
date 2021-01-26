@@ -3,6 +3,11 @@ resource "azurerm_resource_group" "aks_resource_group" {
   location = var.location
 }
 
+resource "azurerm_resource_group" "aks_node_resource_group" {
+  name     = "${var.company}_${var.project}_${var.environment}_node_rg"
+  location = var.location
+}
+
 resource "azurerm_virtual_network" "aks_vnet" {
   name                = "${var.company}_${var.project}_${var.environment}_vnet"
   address_space       = [var.vnet_address_space]

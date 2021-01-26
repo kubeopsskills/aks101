@@ -4,15 +4,6 @@ resource "azuread_application" "aks_azuread_server" {
   group_membership_claims = "All"
   
   required_resource_access {
-    resource_app_id = "00000002-0000-0000-c000-000000000000"
-
-    resource_access {
-      id   = "311a71cc-e848-46a1-bdf8-97ff7156d8e6"
-      type = "Scope"
-    }
-  }
-
-  required_resource_access {
     resource_app_id = "00000003-0000-0000-c000-000000000000"
 
     resource_access {
@@ -29,6 +20,15 @@ resource "azuread_application" "aks_azuread_server" {
       id   = "7ab1d382-f21e-4acd-a863-ba3e13f7da61"
       type = "Role"
     }   
+  }
+
+  required_resource_access {
+    resource_app_id = "00000002-0000-0000-c000-000000000000"
+
+    resource_access {
+      id   = "311a71cc-e848-46a1-bdf8-97ff7156d8e6"
+      type = "Scope"
+    }
   }
 }
 

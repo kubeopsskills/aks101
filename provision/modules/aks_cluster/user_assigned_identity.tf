@@ -9,7 +9,8 @@ resource "azurerm_role_assignment" "managed_identity_operator_assignment" {
   role_definition_name = "Managed Identity Operator"
   principal_id         = azurerm_user_assigned_identity.aks_user_assigned_identity.principal_id
   depends_on = [
-    azurerm_user_assigned_identity.aks_user_assigned_identity
+    azurerm_user_assigned_identity.aks_user_assigned_identity,
+    azurerm_kubernetes_cluster.aks_cluster
   ]
 }
 
@@ -18,6 +19,7 @@ resource "azurerm_role_assignment" "virtual_machine_operator_assignment" {
   role_definition_name = "Virtual Machine Contributor"
   principal_id         = azurerm_user_assigned_identity.aks_user_assigned_identity.principal_id
   depends_on = [
-    azurerm_user_assigned_identity.aks_user_assigned_identity
+    azurerm_user_assigned_identity.aks_user_assigned_identity,
+    azurerm_kubernetes_cluster.aks_cluster
   ]
 }

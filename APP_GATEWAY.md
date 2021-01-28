@@ -30,7 +30,7 @@ You can use [Cloud Shell](https://shell.azure.com/) to install the AGIC Helm pac
     helm install ingress-azure \
       -f helm-config.yaml \
       application-gateway-kubernetes-ingress/ingress-azure \
-      --version 1.3.0
+      --version 1.3.0 -n kube-system
     ```
 
     >Note: Use at least version 1.2.0-rc3, e.g. `--version 1.2.0-rc3`, when installing on k8s version >= 1.16

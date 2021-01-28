@@ -6,6 +6,7 @@ module "foundation_network_aks" {
     location = var.location
     vnet_address_space = var.vnet_address_space
     subnet_address_space = var.subnet_address_space
+    public_subnet_address_space = var.public_subnet_address_space
 }
 
 provider "azure" {

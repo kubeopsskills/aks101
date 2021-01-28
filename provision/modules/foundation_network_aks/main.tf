@@ -22,3 +22,13 @@ resource "azurerm_subnet" "aks_subnet" {
     azurerm_virtual_network.aks_vnet
   ]
 }
+
+resource "azurerm_subnet" "aks_public_subnet" {
+  name                 = "${var.company}_${var.project}_${var.environment}_public_subnet"
+  resource_group_name  = azurerm_resource_group.aks_resource_group.name
+  virtual_network_name = azurerm_virtual_network.aks_vnet.name
+  address_prefixes     = [var.public_subnet_address_space]
+  depends_on = [
+    azurerm_virtual_network.aks_vnet
+  ]
+}

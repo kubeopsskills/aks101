@@ -21,3 +21,7 @@ variable "vnet_address_space" {
 variable "subnet_address_space" {
   description = "Subnet Address Space"
 }
+
+variable "public_subnet_address_space" {
+  description = "Public Subnet Address Space"
+}

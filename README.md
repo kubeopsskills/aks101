@@ -35,12 +35,12 @@ then, run the below command to provision the AKS foundation network
 $ terraform apply -var-file=[your tfvars file]
 ```
 
-After you have provisioned the AKS foundation network already, you can now provision your new AKS cluster.
+After you have provisioned the AKS foundation network already, you can now provision your new AKS cluster
 
 Preparing config for the AKS cluster
 
 ```sh
-$ cd provision/components/aks_cluster
+$ cd ../aks_cluster
 ```
 
 Prepare your tfvars file [terraform config file] like "develop.tfvars", then run "terraform init" command to initialize terraform module
@@ -61,7 +61,27 @@ then, run the below command to provision the new AKS cluster
 $ terraform apply -var-file=[your tfvars file]
 ```
 
-Waiting for 2-3 minutes and having fun!
+Waiting for 2-3 minutes and run the following commands to verify if the new AKS cluster has been created successfully
+
+Get Admin Kubernetes Config
+
+```sh
+$ az aks get-credentials --name [your_aks_cluster_name] --resource-group [your_aks_cluster_resource_group] --admin
+```
+
+Get Pods
+
+```sh
+$ kubectl get pods
+```
+
+You'll got the result
+
+```sh
+sirinatpaphatsirinatthi@Sirinats-MacBook-Pro aks101 % kubectl get po 
+
+No resources found in default namespace.
+```
 
 *** Note:
 

@@ -1,7 +1,7 @@
 resource "azurerm_user_assigned_identity" "aks_user_assigned_identity" {
   resource_group_name = var.aks_resource_group_name
   location            = var.location
-  name = "${var.company}_${var.project}_${var.environment}_aks_user_assigned_identity"
+  name = "${var.company}-${var.project}-${var.environment}-aks_user-assigned-identity"
 }
 
 resource "azurerm_role_assignment" "managed_identity_operator_assignment" {

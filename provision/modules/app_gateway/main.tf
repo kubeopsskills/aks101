@@ -1,5 +1,5 @@
 resource "azurerm_application_gateway" "aks_app_gateway" {
-  name                = "${var.company}_${var.project}_${var.environment}_${var.app_gw_name}"
+  name                = "${var.company}-${var.project}-${var.environment}-${var.app_gw_name}"
   resource_group_name = var.app_gw_resource_group_name
   location            = var.location
 

@@ -1,6 +1,6 @@
 resource "azuread_application" "aks_azuread_server" {
-  display_name            = "${var.company}_${var.project}_${var.environment}_aksServer"
-  identifier_uris         = ["https://${var.company}_${var.project}_${var.environment}_aksServer"]
+  display_name            = "${var.company}-${var.project}-${var.environment}-aksServer"
+  identifier_uris         = ["https://${var.company}-${var.project}-${var.environment}-aksServer"]
   group_membership_claims = "All"
   
   required_resource_access {
@@ -43,9 +43,9 @@ resource "azuread_service_principal_password" "aks_azuread_server_principal_pass
 }
 
 resource "azuread_application" "aks_azuread_client" {
-  display_name            = "${var.company}_${var.project}_${var.environment}_aksClient"
+  display_name            = "${var.company}-${var.project}-${var.environment}-aksClient"
   type                    = "native"
-  reply_urls              = ["https://${var.company}_${var.project}_${var.environment}_aksServer"]
+  reply_urls              = ["https://${var.company}-${var.project}-${var.environment}-aksClient"]
   
   required_resource_access {
     resource_app_id = "00000002-0000-0000-c000-000000000000"

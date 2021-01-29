@@ -4,7 +4,7 @@ data "azurerm_kubernetes_service_versions" "kubernetes_version" {
 }
 
 resource "azurerm_kubernetes_cluster" "aks_cluster" {
-  name                = "${var.company}_${var.project}_${var.environment}_aks"
+  name                = "${var.project}-${var.environment}-aks"
   location            = var.location
   resource_group_name = var.aks_resource_group_name
   node_resource_group = var.aks_node_resource_group_name

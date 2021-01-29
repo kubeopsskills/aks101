@@ -5,7 +5,7 @@ module "foundation_network_aks" {
     project = var.project
     location = var.location
     vnet_address_space = var.vnet_address_space
-    subnet_address_space = var.subnet_address_space
+    private_subnet_address_space = var.private_subnet_address_space
     public_subnet_address_space = var.public_subnet_address_space
 }
 

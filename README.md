@@ -87,7 +87,7 @@ No resources found in default namespace.
 
 You might double run "terraform apply" command to pass the new AKS cluster provision step, as "Terraform Azure AD Application" module doesn't support granting admin consent for Azure directory right now.
 
-References:
+# References:
 - https://github.com/Azure/aad-pod-identity
 - https://github.com/Azure/application-gateway-kubernetes-ingress
 - https://docs.microsoft.com/en-us/azure/aks/azure-ad-integration-cli

@@ -40,7 +40,7 @@ After you have provisioned the new App Gateway, you will provision an App Gatewa
 Preparing config for an App Gateway User Assigned Identity
 
 ```sh
-$ cd provision/components/app_gateway
+$ cd ../user_assigned_identity
 ```
 
 Prepare your tfvars file [terraform config file] like "develop.tfvars", then run "terraform init" command to initialize terraform module

@@ -1,15 +1,15 @@
 # This file contains the essential configs for the ingress controller helm chart
 
 # Verbosity level of the App Gateway Ingress Controller
-verbosityLevel: 6
+verbosityLevel: 5
 
 ################################################################################
 # Specify which application gateway the ingress controller will manage
 #
 appgw:
     subscriptionId: 3682cfc7-582d-46de-82e9-c895ca6c421c
-    resourceGroup: kubeopsskills_cloudnative_develop_node_rg
-    name: kubeopsskills_cloudnative_develop_aks_ingress
+    resourceGroup: MC_kubeopsskills-cloudnative-develop-rg_cloudnative-develop-aks_southeastasia
+    name: kubeopsskills-cloudnative-develop-aks-ingress
     usePrivateIP: false
 
     # Setting appgw.shared to "true" will create an AzureIngressProhibitedTarget CRD.
@@ -33,8 +33,8 @@ appgw:
 # - Option 1: AAD-Pod-Identity (https://github.com/Azure/aad-pod-identity)
 armAuth:
     type: aadPodIdentity
-    identityResourceID: /subscriptions/3682cfc7-582d-46de-82e9-c895ca6c421c/resourcegroups/kubeopsskills_cloudnative_develop_node_rg/providers/Microsoft.ManagedIdentity/userAssignedIdentities/kubeopsskills_cloudnative_develop_aks_ingress_identity
-    identityClientID:  ebae134b-5392-457a-bb2d-b30d77a56e9a
+    identityResourceID: /subscriptions/3682cfc7-582d-46de-82e9-c895ca6c421c/resourceGroups/MC_kubeopsskills-cloudnative-develop-rg_cloudnative-develop-aks_southeastasia/providers/Microsoft.ManagedIdentity/userAssignedIdentities/kubeopsskills-cloudnative-develop-aks-ingress-identity
+    identityClientID: 5072a5b8-b08d-4c4f-b2ab-03bdf12222be
 
 ## Alternatively you can use Service Principal credentials
 # armAuth:
